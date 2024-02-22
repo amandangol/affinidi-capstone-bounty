@@ -11,7 +11,7 @@ import countryToCurrency from "country-to-currency";
 import getSymbolFromCurrency from 'currency-symbol-map';
 import './ProductHome.css';
 import CircularIndicator from '../utils/CircularIndicator'; 
-import Footer from '../utils/Footer';
+import Footer from '../components/footer';
 
 
 const ProductHomepage = () => {
