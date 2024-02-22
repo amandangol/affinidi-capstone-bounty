@@ -60,14 +60,20 @@ const ProductHomepage = () => {
   const fetchProducts = async () => {
     try {
       const response = await fetch(fakeStoreApi);
-      
+  
       if (!response.ok) {
         throw new Error('Failed to fetch products');
+      }
+  
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Invalid content type. Expected JSON.');
       }
   
       const data = await response.json();
       setProducts(data);
       setLoading(false);
+  
       // Initialize quantity state for each product to 1
       const initialQuantityMap = {};
       data.forEach(product => {
@@ -77,9 +83,9 @@ const ProductHomepage = () => {
     } catch (error) {
       console.error('Error fetching products:', error);
       setLoading(false);
-      // Handle error, e.g., display error message to the user
     }
   };
+  
   
 
   const checkItems = (product, event) => {
