@@ -60,6 +60,11 @@ const ProductHomepage = () => {
   const fetchProducts = async () => {
     try {
       const response = await fetch(fakeStoreApi);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+  
       const data = await response.json();
       setProducts(data);
       setLoading(false);
@@ -72,8 +77,10 @@ const ProductHomepage = () => {
     } catch (error) {
       console.error('Error fetching products:', error);
       setLoading(false);
+      // Handle error, e.g., display error message to the user
     }
   };
+  
 
   const checkItems = (product, event) => {
     if (profile === null || profile === undefined) {
