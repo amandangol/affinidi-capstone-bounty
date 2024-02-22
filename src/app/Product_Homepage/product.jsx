@@ -56,10 +56,11 @@ const ProductHomepage = () => {
       console.log("Loading");
     }
   };
+  const fakestoreapi= PROCESS.env.NEXT_PUBLIC_FAKE_STORE_API
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https:/fakestoreapi.com/products');
+      const response = await fetch(fakestoreapi);
       const data = await response.json();
       setProducts(data);
       setLoading(false);
@@ -165,7 +166,7 @@ products.forEach((product) => {
   // Inside the ProductHome component
 
 const addToCartHandler = (product) => {
-  // Get the quantity somehow, perhaps from a state variable
+  
   const quantity = quantityMap[product.id];
   // Clear the arrayPrice before adding new prices
   arrayPrice = [];
