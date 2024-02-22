@@ -4,11 +4,12 @@ import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { getCode } from 'country-list';
-import countryToCurrency from "country-to-currency";
+import countryToCurrency from 'country-to-currency';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import UserContext from '../contexts/UserContext';
 import CartContext from '../contexts/CartContext';
-import CircularIndicator from '../utils/CircularIndicator'; 
+import CircularIndicator from '../utils/CircularIndicator';
+import Image from 'next/image'; // Import Image component from next/image
 
 const Cart = () => {
   const router = useRouter();
@@ -22,7 +23,6 @@ const Cart = () => {
 
   useEffect(() => {
     setLoading(false);
-    return () => setLoading(true);
   }, []);
 
   const calculateTotalPrice = () => {
@@ -38,18 +38,18 @@ const Cart = () => {
       {loading ? (
         <CircularIndicator />
       ) : cartItems?.length === 0 ? (
-        <div className="text-center text-2xl font-bold pt-10">You haven't added anything to your cart yet.</div>
+        <div className="text-center text-2xl font-bold pt-10">You haven&apos;t added anything to your cart yet.</div>
       ) : (
         <div className="w-full pr-8 pl-8">
           <table className="table-auto text-center border-separate bg-gray-100 w-full">
             <caption className="text-lg font-bold pb-2">Your Cart</caption>
             <colgroup>
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "25%" }} />
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "20%" }} />
+              <col style={{ width: '20%' }} />
+              <col style={{ width: '15%' }} />
+              <col style={{ width: '25%' }} />
+              <col style={{ width: '15%' }} />
+              <col style={{ width: '15%' }} />
+              <col style={{ width: '10%' }} />
             </colgroup>
             <thead>
               <tr>
@@ -65,7 +65,7 @@ const Cart = () => {
               {cartItems?.map((item) => (
                 <tr key={item.id}>
                   <td className="border border-slate-600 flex justify-center justify-items-center">
-                    <img className="size-24" src={item.image} alt={item.title} />
+                    <Image src={item.image} alt={item.title} width={64} height={64} /> {/* Replaced img tag with Image component */}
                   </td>
                   <td className="border border-slate-600">{item.title}</td>
                   <td className="border border-slate-600">{item.quantity}</td>
@@ -73,7 +73,7 @@ const Cart = () => {
                   <td className="border border-slate-600">{currencySymbol} {Intl.NumberFormat().format(item.price * item.quantity)}</td>
                   <td className="border border-slate-600 justify-center justify-items-center">
                     <FontAwesomeIcon
-                      className="size-8 text-red-600 px-2 cursor-pointer hover:scale-125"
+                      className="text-red-600 cursor-pointer hover:scale-125"
                       icon={faTrashAlt}
                       onClick={() => removeFromCart(item)}
                     />
@@ -83,8 +83,8 @@ const Cart = () => {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="5" className="py-2 font-bold">Total</td>
-                <td className="border border-slate-600 font-bold">{currencySymbol} {Intl.NumberFormat().format(calculateTotalPrice())}</td>
+                <td colSpan="4" className="py-2 font-bold">Total</td>
+                <td colSpan="2" className="border border-slate-600 font-bold">{currencySymbol} {Intl.NumberFormat().format(calculateTotalPrice())}</td>
               </tr>
             </tfoot>
           </table>
