@@ -1,4 +1,8 @@
+# Bounty - Build Upon the Affinidi Capstone
+
+This updated capstone project builds upon the previous implementation by enhancing the user experience and incorporating additional features using Affinidi's products. The project is an online retail store built using NextJS and leverages Affinidi Login and Affinidi Vault for user authentication and data storage.
 To complete this bounty quest, I have made several improvements and enhancements to the existing capstone project. Below are the details of the changes made, along with the links to the deployed site, GitHub repository, and a write-up describing the new features.
+First of all, I converted the existing React project to utilize the Next.js framework for improved scalability and easier deployment.
 
 #### New Features and Enhancements:
 
@@ -16,7 +20,7 @@ In the Navbar component (`Navbar.jsx`), I made several modifications to enhance 
 
 - **Dynamic Navigation Buttons**: Implemented dynamic navigation buttons based on the user's authentication status. For authenticated users, the Navbar displays buttons for accessing the cart and logging out. For unauthenticated users, a login button is displayed instead.
   ![alt text](image.png)
-  ![alt text](image-1.png)
+  ![alt text](image-7.png)
 
 ### Currency Matching User's Country:
 
@@ -67,4 +71,8 @@ To improve the usability and visual appeal of the cart page, I implemented sever
 With these modifications, the cart page offers a seamless and enjoyable shopping experience, empowering users to easily manage their cart items and make informed purchase decisions.
 ![
     ![alt text](image-5.png)
-](image-4.png)
+](image-4.png) ![alt text](image-6.png)
+
+#### Conclusion
+
+This updated capstone project showcases the integration of Affinidi's products to create a more personalized and seamless online shopping experience. By leveraging zero-party data and additional information stored in Affinidi Vault, the project enhances user engagement and satisfaction while maintaining security and privacy.

@@ -57,8 +57,8 @@
           return (
             <div className="flex items-center gap-x-3 pr-3"> {/* Changed auto-rows-auto to items-center */}
             {localProfile && (
-              <span className="text-center text-gray-800 font-semibold text-lg">
-            Welcome, {localProfile.givenName}
+              <span className="text-center text-black-800 font-semibold text-lg">
+            Greetings, {localProfile.givenName}
             </span>
               )}
               <img src={profilePicture} alt="Person icon" className="w-12 h-12 rounded-full mb-2"></img>
