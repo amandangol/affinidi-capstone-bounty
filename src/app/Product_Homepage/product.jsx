@@ -59,7 +59,7 @@ const ProductHomepage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(fakeStoreApi);
+      const response = await fetch("https://api.escuelajs.co/api/v1/products");
       const contentType = response.headers.get('content-type');
   
       if (!response.ok) {
