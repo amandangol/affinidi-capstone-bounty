@@ -59,19 +59,15 @@ const ProductHomepage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(products => {
-        console.log(products); 
-      });
+      const response = await fetch(fakeStoreApi);
+      const contentType = response.headers.get('content-type');
   
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
   
-      const contentType = response.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
-        throw new Error('Invalid content type. Expected JSON.');
+        throw new Error('Response is not in JSON format');
       }
   
       const data = await response.json();
@@ -89,6 +85,7 @@ const ProductHomepage = () => {
       setLoading(false);
     }
   };
+  
   
   
 
