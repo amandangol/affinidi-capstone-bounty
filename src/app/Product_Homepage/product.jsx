@@ -23,7 +23,7 @@ const ProductHomepage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [quantityMap, setQuantityMap] = useState({}); // State to manage quantity for each product
-
+  const fakeStoreApi = process.env.NEXT_PUBLIC_FAKE_STORE_API;
   
 
   let arrayPrice = [];
@@ -56,11 +56,10 @@ const ProductHomepage = () => {
       console.log("Loading");
     }
   };
-  const fakestoreapi= PROCESS.env.NEXT_PUBLIC_FAKE_STORE_API
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(fakestoreapi);
+      const response = await fetch(fakeStoreApi);
       const data = await response.json();
       setProducts(data);
       setLoading(false);
