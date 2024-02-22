@@ -59,7 +59,11 @@ const ProductHomepage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(fakeStoreApi);
+      const response = await fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(products => {
+        console.log(products); 
+      });
   
       if (!response.ok) {
         throw new Error('Failed to fetch products');
