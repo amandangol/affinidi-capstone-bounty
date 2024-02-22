@@ -21,6 +21,7 @@ In the Navbar component (`Navbar.jsx`), I made several modifications to enhance 
 ### Currency Matching User's Country:
 
 **Code Reference: /product_homepage/product.jsx**
+![alt text](image-2.png)
 
 To enhance the user experience and make the product prices more relevant to the user, I implemented a feature to match the currency displayed on the website with the user's country. Here's how it works:
 
@@ -51,6 +52,7 @@ With this feature, users can enjoy a visually engaging shopping experience while
 ### Cart Page Enhancement:
 
 **Code Reference: /cart/page.jsx**
+![alt text](image-3.png)
 
 To improve the usability and visual appeal of the cart page, I implemented several enhancements and modifications:
 
@@ -63,3 +65,6 @@ To improve the usability and visual appeal of the cart page, I implemented sever
 4. **Dynamic Total Calculation**: I implemented dynamic calculation of the total price based on the items in the cart. As users add or remove items, the total price updates dynamically, providing real-time feedback on the cost of their cart contents.
 
 With these modifications, the cart page offers a seamless and enjoyable shopping experience, empowering users to easily manage their cart items and make informed purchase decisions.
+![
+    ![alt text](image-5.png)
+](image-4.png)
