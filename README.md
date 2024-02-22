@@ -70,7 +70,7 @@ To improve the usability and visual appeal of the cart page, I implemented sever
 
 With these modifications, the cart page offers a seamless and enjoyable shopping experience, empowering users to easily manage their cart items and make informed purchase decisions.
 ![
-    ![alt text](image-5.png)
+    <!-- ![alt text](image-5.png) -->
 ](image-4.png) ![alt text](image-6.png)
 
 #### Conclusion
