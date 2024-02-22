@@ -1,4 +1,5 @@
 "use client"; 
+
 import React, { useState, useContext } from 'react';
 import UserContext from '../contexts/UserContext';
 import CartContext from '../contexts/CartContext';
@@ -162,7 +163,7 @@ const Checkout = () => {
         aria-describedby="parent-modal-description"
         >
           <Box sx={style} className="ModalContent">
-            <div className="ModalMessage">Order submitted. Thank you for shopping with us!</div>
+            <div className="ModalMessage">Your order has been placed successfully. Thanks for choosing us! 🛍️</div>
             <button onClick={closeModal} className="OKButton">OK</button>
           </Box>
         </Modal>

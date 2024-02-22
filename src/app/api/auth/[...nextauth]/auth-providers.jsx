@@ -7,56 +7,40 @@ import CartContext from '../../../contexts/CartContext';
 export function Provider ({ children }) {
     const queryClient = new QueryClient();
     const [userProfile, setUserProfile] = useState(null);
-    const [cartItems, setCartItems] = useState();
-
-    const updateCart = () => {
-        const savedCart = sessionStorage.getItem('cart');
-        return savedCart ? JSON.parse(savedCart) : [];
-    };
+    const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
-        setCartItems(updateCart());
-    }, [])
+        const savedCart = sessionStorage.getItem('cart');
+        if (savedCart) {
+            setCartItems(JSON.parse(savedCart));
+        }
+    }, []);
 
-    const addToCart = (product, event, price,quantity) => {
-        console.log('quanttity',quantity);
+    const addToCart = (product, event, price, quantity) => {
         event.preventDefault();
-
-        let amount = Number(event?.target?.[0].value);
-        let priceFloat = parseFloat(price?.[product.id]);
-        console.log(price);
-
+        const amount = Number(event?.target?.[0].value);
+        const priceFloat = parseFloat(price);
+    
         setCartItems((prevItems) => {
             let updatedItems = [];
             const itemExists = prevItems.find((item) => item.id === product.id);
-            if (priceFloat !== null) {
+            if (!isNaN(priceFloat) && !isNaN(amount)) {
                 if (itemExists) {
-                    product.price = priceFloat;
                     updatedItems = prevItems.map((item) =>
-                    item.id === product.id ? { ...item, quantity: item.quantity + amount } : item
+                        item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
                     );
                 } else {
-                    product.price = priceFloat;
-                    updatedItems = [...prevItems, { ...product, quantity: amount }];
+                    updatedItems = [...prevItems, { ...product, price: priceFloat, quantity: quantity }];
                 }
+                sessionStorage.setItem('cart', JSON.stringify(updatedItems));
             }
-
-            sessionStorage.setItem('cart', JSON.stringify(updatedItems));
-            return updatedItems
+            return updatedItems;
         });
     };
-
+    
     const removeFromCart = (product) => {
         setCartItems((prevItems) => {
-            let updatedItems = [];
-            if (product.quantity > 1) {
-            updatedItems = prevItems.map((item) =>
-                item.id === product.id ? {...item, quantity: item.quantity - 1} : item
-            );
-            } else {
-            updatedItems = prevItems.filter((item) => item.id !== product.id);
-            }
-            
+            const updatedItems = prevItems.filter((item) => item.id !== product.id);
             sessionStorage.setItem('cart', JSON.stringify(updatedItems));
             return updatedItems;
         });
@@ -69,11 +53,11 @@ export function Provider ({ children }) {
 
     return (
         <QueryClientProvider client={queryClient}>
-        <UserContext.Provider value={{ profile: userProfile, setProfile: setUserProfile }}>
-        <CartContext.Provider value={{cartItems, removeFromCart, addToCart, clearCart}}>
-            {children}
-        </CartContext.Provider>
-        </UserContext.Provider>
+            <UserContext.Provider value={{ profile: userProfile, setProfile: setUserProfile }}>
+                <CartContext.Provider value={{ cartItems, removeFromCart, addToCart, clearCart }}>
+                    {children}
+                </CartContext.Provider>
+            </UserContext.Provider>
         </QueryClientProvider>
-    )
-};
+    );
+}

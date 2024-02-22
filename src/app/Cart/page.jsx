@@ -65,12 +65,13 @@ const Cart = () => {
               {cartItems?.map((item) => (
                 <tr key={item.id}>
                   <td className="border border-slate-600 flex justify-center justify-items-center">
-                    <Image src={item.image} alt={item.title} width={64} height={64} /> {/* Replaced img tag with Image component */}
+                    <Image src={item.images[0]} alt={item.title} width={120} height={120} /> {/* Replaced img tag with Image component */}
                   </td>
                   <td className="border border-slate-600">{item.title}</td>
                   <td className="border border-slate-600">{item.quantity}</td>
                   <td className="border border-slate-600">{currencySymbol} {Intl.NumberFormat().format(item.price)}</td>
                   <td className="border border-slate-600">{currencySymbol} {Intl.NumberFormat().format(item.price * item.quantity)}</td>
+                  
                   <td className="border border-slate-600 justify-center justify-items-center">
                     <FontAwesomeIcon
                       className="text-red-600 cursor-pointer hover:scale-125"
