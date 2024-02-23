@@ -73,7 +73,7 @@ const ProductHomepage = () => {
             const data = await response.json();
         
             // Limit the number of products to the first 16
-            const slicedData = data.slice(0, 16);
+            const slicedData = data.slice(0, 20);
         
             setProducts(slicedData);
             setLoading(false);

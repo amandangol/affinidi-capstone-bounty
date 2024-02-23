@@ -58,7 +58,7 @@ const Header = () => {
         <div className="flex items-center gap-x-3 pr-3">
           {localProfile && (
             <span className="text-center text-black-800 font-semibold text-lg">
-              Greetings, {localProfile.givenName}
+              Welcome, {localProfile.givenName}
             </span>
           )}
           <img src={profilePicture} alt="Person icon" className="w-12 h-12 rounded-full mb-2"></img>
